@@ -1,0 +1,108 @@
+{% extends 'customer/base.html' %}
+
+{% block content %}
+<div class="container mb-5">
+    <div class="row justify-content-center mt-1">
+        <div class="col-md-12 col-sm-12 p-4">
+            <form method="POST">
+                {% csrf_token %}
+                <h2>Appetizers</h2>
+                <div class="row">
+                    {% for app in appetizers %}
+                    <div class="col-md-4 col-sm-12 text-center mb-5">
+                        <img class="rounded" src="{{ app.image.url }}" width="350" height="300">
+                        <h5 class="mt-3">{{ app.name }}</h5>
+                        <p>Price: {{ app.price }}</p>
+                        <input for = app type="checkbox" name="items[]" class="form-check-input" value="{{ app.pk }}">
+                    </div>
+                    {% endfor %}
+                </div>
+                <h2>Entres</h2>
+                <div class="row">
+                    {% for entre in entres %}
+                    <div class="col-md-4 col-sm-12 text-center mb-5">
+                        <img class="rounded" src="{{ entre.image.url }}" width="350" height="300">
+                        <h5 class="mt-3">{{ entre.name }}</h5>
+                        <p>Price: {{ entre.price }}</p>
+                        <input for = entre type="checkbox" name="items[]" class="form-check-input" value="{{ entre.pk }}">
+                    </div>
+                    {% endfor %}
+                </div>
+                <h2>Desserts</h2>
+                <div class="row">
+                    {% for dessert in desserts %}
+                    <div class="col-md-4 col-sm-12 text-center mb-5">
+                        <img class="rounded" src="{{ dessert.image.url }}" width="350" height="300">
+                        <h5 class="mt-3">{{ dessert.name }}</h5>
+                        <p>Price: {{ dessert.price }}</p>
+                        <input for = dessert type="checkbox" name="items[]" class="form-check-input" value="{{ dessert.pk }}">
+                    </div>
+                    {% endfor %}
+                </div>
+                <h2>Drinks</h2>
+                <div class="row">
+                    {% for drink in drinks %}
+                    <div class="col-md-4 col-sm-12 text-center mb-5">
+                        <img class="rounded" src="{{ drink.image.url }}" width="350" height="300">
+                        <h5 class="mt-3">{{ drink.name }}</h5>
+                        <p>Price: {{ drink.price }}</p>
+                        <input for = drink type="checkbox" name="items[]" class="form-check-input" value="{{ drink.pk }}">
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <div class="form-group pt-3">
+                    <label for="name">Full Name</label>
+                    <input required class="form-control" type="text" placeholder="Your Name" name="name" />
+                </div>
+
+                <div class="form-group pt-3">
+                    <label for="name">Mobile Number</label>
+                    <input required class="form-control" type="text" placeholder="(123)456-7890" name="mobile_number" />
+                </div>
+
+                <div class="form-group pt-3">
+                    <label for="name">Promo Code</label>
+                    <input required class="form-control" type="text" placeholder="Enter NONE if none" name="promo_code" />
+                </div>
+                <div class="form-group pt-3">
+                    <label for="name">Payment Method</label>
+                    <input required class="form-control" type="text" placeholder="Credit Card" name="payment_method" />
+                </div>
+
+                <div class="form-group pt-3">
+                    <label for="name">Payment Description</label>
+                    <input required class="form-control" type="text" placeholder="Discover Card" name="payment_description" />
+                </div>
+                </div>
+                
+
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#submitModal">
+                  Submit Order!
+                </button>
+                <!-- <button class="btn btn-dark mt-5">Place Order!</button> -->
+
+                <!-- Modal -->
+                <div class="modal fade" id="submitModal" tabindex="-1" role="dialog" aria-labelledby="submitModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="submitModalLabel">Submit Your Order!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <h6 style="text-align:center">Make sure to review your order before continuing</h6>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-dismiss="modal">Go Back</button>
+                        <button type="submit" class="btn btn-dark">Place Order!</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

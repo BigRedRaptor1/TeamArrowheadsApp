@@ -1,0 +1,8 @@
+<p>{{days}}</p>
+<p>{{hours}}</p>
+<p>{{poor}}</p>
+
+
+{% for i in days %}
+    <div>{{ i.day }} - {{i.avg_rating}} - {{i.count}}</div>
+{% endfor %}

@@ -1,0 +1,50 @@
+{% extends "restaurant/base.html" %}
+
+
+{% block content %}
+<h2 style="text-align:center">Low Rated Foods</h2>
+<table class="table table-borderless">
+    <thead class="border-bottom font-weight-bold">
+        <tr>
+            <td><h3>Food</h3></td>
+            <td><h3>Low Rating Order Count</h3></td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for key, value in poor %}
+            <tr>
+                <td>{{key}}</td>
+                <td>{{value}}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h2 style="text-align:center">Peak Times</h2>
+<table class="table table-borderless">
+    <thead class="border-bottom font-weight-bold">
+        <tr>
+            <td><h3>Day/Hour</h3></td>
+            <td>Order Count</h3></td>
+            <td>Avg Rating</h3></td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in hours %}
+            <tr>
+                <td>{{i.hour}}</td>
+                <td>{{i.count}}</td>
+                <td>{{i.avg_rating}}</td>
+            </tr>
+        {% endfor %}
+        {% for i in days %}
+            <tr>
+                <td>{{i.day}}</td>
+                <td>{{i.count}}</td>
+                <td>{{i.avg_rating}}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock content %}
